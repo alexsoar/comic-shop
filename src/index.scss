@@ -8,6 +8,10 @@ body {
   h1 {
     color: red;
   }
+  h2 {
+    font-weight: normal;
+    font-size: 20px;
+  }
 }
 
 header {
@@ -44,5 +48,12 @@ ul li {
   padding: 20px;
   span {
     padding-left: 10px;
+  }
+}
+.price {
+  span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #777;
   }
 }
