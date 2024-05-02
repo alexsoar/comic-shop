@@ -4,28 +4,22 @@ function App() {
       <header>
         <div className="westSide">
           <img width={150} src="/img/logo.jpg" alt="" />
-        </div>
-        <div className="headerInfo">
-          <h3>Comic Shop</h3>
-          <p>The best comic shop ever</p>
+          <div className="headerInfo">
+            <h3>Comic Shop</h3>
+            <p>The best comic shop ever</p>
+          </div>
         </div>
         <ul className="eastSide">
           <li>
-            <svg></svg>
-          </li>
-          <li>
+            <img width={18} alt="cart" src="/img/cart.svg"></img>
             <span>1280 £</span>
           </li>
           <li>
-            <svg></svg>
-          </li>
-          <li>
+            <img width={18} alt="favorites" src="/img/favorites.svg"></img>
             <span>favorites</span>
           </li>
           <li>
-            <svg></svg>
-          </li>
-          <li>
+            <img width={18} alt="profile" src="/img/profile.svg"></img>
             <span>profile</span>
           </li>
         </ul>
