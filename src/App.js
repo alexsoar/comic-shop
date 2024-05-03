@@ -5,8 +5,8 @@ function App() {
         <div className="westSide">
           <img width={150} src="/img/logo.jpg" alt="" />
           <div className="headerInfo">
-            <h3>Comic Shop</h3>
-            <p>The best comic shop ever</p>
+            <h3>Comics Shop</h3>
+            <p>The best comics shop ever</p>
           </div>
         </div>
         <ul className="eastSide">
