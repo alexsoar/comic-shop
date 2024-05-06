@@ -9,22 +9,30 @@ function App() {
             <p>The best comics shop ever</p>
           </div>
         </div>
-        <ul className="eastSide">
-          <li>
-            <img width={18} alt="cart" src="/img/cart.svg"></img>
-            <span>1280 £</span>
-          </li>
-          <li>
-            <img width={18} alt="favorites" src="/img/favorites.svg"></img>
-            <span>favorites</span>
-          </li>
-          <li>
-            <img width={18} alt="profile" src="/img/profile.svg"></img>
-            <span>profile</span>
-          </li>
-        </ul>
+        <div className="eastSide">
+          <ul className="d-flex">
+            <li>
+              <img width={18} alt="cart" src="/img/cart.svg"></img>
+              <span>1280 £</span>
+            </li>
+            <li>
+              <img width={18} alt="favorites" src="/img/favorites.svg"></img>
+              <span>favorites</span>
+            </li>
+            <li>
+              <img width={18} alt="profile" src="/img/profile.svg"></img>
+              <span>profile</span>
+            </li>
+          </ul>
+        </div>
       </header>
-      <h1>All comics</h1>
+      <div className="headLine">
+        <h1>All comics</h1>
+        <div className="search d-flex">
+          <img width={18} src="/img/search.svg" alt="search" />{' '}
+          <input type="text" placeholder="Search" />
+        </div>
+      </div>
       <div className="container">
         {/* Item cards START */}
         <div className="item">
