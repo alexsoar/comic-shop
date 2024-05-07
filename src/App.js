@@ -1,6 +1,11 @@
 function App() {
   return (
     <div className="wrapper">
+      <div className="overlay">
+        <div className="cartSidebar">
+          <h2>Shopping basket</h2>
+        </div>
+      </div>
       <header>
         <div className="westSide">
           <img width={150} src="/img/logo.jpg" alt="" />
@@ -17,11 +22,9 @@ function App() {
             </li>
             <li>
               <img width={18} alt="favorites" src="/img/favorites.svg"></img>
-              <span>favorites</span>
             </li>
             <li>
               <img width={18} alt="profile" src="/img/profile.svg"></img>
-              <span>profile</span>
             </li>
           </ul>
         </div>
