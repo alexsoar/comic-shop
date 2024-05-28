@@ -5,7 +5,7 @@ function App() {
         <div className="cartSidebar">
           <h2>Shopping basket</h2>
           <div className="cartItem">
-            <img width={100} src="/img/posters/avengers.jpeg" alt="cartimage" />
+            <img width={70} src="/img/posters/avengers.jpeg" alt="cartimage" />
             <div className="cartInfo">
               <h2>Avengers</h2>
               <b>£ 12</b>
