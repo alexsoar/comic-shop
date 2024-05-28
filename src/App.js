@@ -2,11 +2,11 @@ import { motion } from 'framer-motion';
 function App() {
   return (
     <div className="wrapper">
-      <div className="overlay">
+      <div style={{ display: 'none' }} className="overlay">
         <div className="cartSidebar">
           <h2>Shopping basket</h2>
           <motion.button
-            className="addButton"
+            className="removeButton"
             whileHover={{
               scale: 1.25,
               transition: { duration: 0.3 },
@@ -21,7 +21,7 @@ function App() {
               <b>£ 12</b>
             </div>
             <motion.button
-              className="addButton"
+              className="removeButton"
               whileHover={{
                 scale: 1.25,
                 transition: { duration: 0.3 },
