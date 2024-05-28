@@ -146,9 +146,11 @@ ul li {
 }
 // Shopping basket START //
 .cartSidebar {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   width: 385px;
-  height: 100%;
+  height: 90%;
   right: 0;
   padding: 30px;
   background: #ffffff;
@@ -181,5 +183,34 @@ ul li {
     margin: 5px 0;
     font-size: 18px;
   }
+}
+.cartCheckout {
+  margin-top: auto;
+}
+.sum,
+.tax {
+  display: flex;
+  justify-content: space-between;
+  p {
+    margin: 10px 0;
+    font-weight: 600;
+  }
+}
+.btnCheckout {
+  width: 100%;
+  height: 55px;
+  margin-top: 30px;
+  background: #9dd558;
+  border-radius: 18px;
+  /* Оформить заказ */
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
 }
 // Shopping basket END //

@@ -14,6 +14,17 @@ function App() {
               <img src="/img/remove_btn.svg" alt="removebtn" />
             </button>
           </div>
+          <div className="cartCheckout">
+            <div className="sum">
+              <p>Total:</p>
+              <p>£ 12</p>
+            </div>
+            <div className="tax">
+              <p>Tax 5%</p>
+              <p>£ 0.6</p>
+            </div>
+            <button className="btnCheckout">Proceed to Checkout</button>
+          </div>
         </div>
       </div>
       <header>
