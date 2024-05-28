@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 function App() {
   return (
     <div className="wrapper">
@@ -10,9 +11,15 @@ function App() {
               <h2>Avengers</h2>
               <b>£ 12</b>
             </div>
-            <button className="addButton">
+            <motion.button
+              className="addButton"
+              whileHover={{
+                scale: 1.25,
+                transition: { duration: 0.3 },
+              }}
+            >
               <img src="/img/remove_btn.svg" alt="removebtn" />
-            </button>
+            </motion.button>
           </div>
           <div className="cartCheckout">
             <div className="sum">
@@ -23,7 +30,18 @@ function App() {
               <p>Tax 5%</p>
               <p>£ 0.6</p>
             </div>
-            <button className="btnCheckout">Proceed to Checkout</button>
+            <motion.button
+              className="btnCheckout"
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: '#007bff',
+                transition: { duration: 0.3 },
+              }}
+              whileTap={{ scale: 0.9 }}
+              animate={{ y: [0, -10, 0], transition: { duration: 0.5 } }}
+            >
+              Proceed to Checkout
+            </motion.button>
           </div>
         </div>
       </div>
