@@ -5,6 +5,15 @@ function App() {
       <div className="overlay">
         <div className="cartSidebar">
           <h2>Shopping basket</h2>
+          <motion.button
+            className="addButton"
+            whileHover={{
+              scale: 1.25,
+              transition: { duration: 0.3 },
+            }}
+          >
+            <img src="/img/remove_btn.svg" alt="removebtn" />
+          </motion.button>
           <div className="cartItem">
             <img width={70} src="/img/posters/avengers.jpeg" alt="cartimage" />
             <div className="cartInfo">
