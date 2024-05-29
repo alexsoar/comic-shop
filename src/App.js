@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Item from './components/Item';
 function App() {
   return (
     <div className="wrapper">
@@ -86,24 +87,7 @@ function App() {
       </div>
       <div className="container">
         {/* Item cards START */}
-        <div className="item">
-          <img width={200} src="/img/posters/avengers.jpeg" alt="" />
-          <h2>Avengers</h2>
-          <div className="itemBottom">
-            <div className="price">
-              <span>Price:</span>
-              <p>12£</p>
-            </div>
-            <div className="buttons">
-              <button className="addButton">
-                <img src="/img/like-off.svg" alt="button" />
-              </button>
-              <button className="addButton">
-                <img src="/img/button.svg" alt="button" />
-              </button>
-            </div>
-          </div>
-        </div>
+        <Item />
         <div className="item">
           <img width={200} src="/img/posters/ironman.jpeg" alt="" />
           <h2>Avengers</h2>
