@@ -1,12 +1,12 @@
-function Item() {
+function Item(props) {
   return (
     <div className="item">
-      <img width={200} src="/img/posters/avengers.jpeg" alt="" />
-      <h2>Avengers</h2>
+      <img width={200} src={props.imageUrl} alt="" />
+      <h2>{props.title}</h2>
       <div className="itemBottom">
         <div className="price">
           <span>Price:</span>
-          <p>12£</p>
+          <p>£ {props.price}</p>
         </div>
         <div className="buttons">
           <button className="addButton">

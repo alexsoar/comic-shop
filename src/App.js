@@ -1,6 +1,26 @@
 import { Header } from './components/Header';
 import { Item } from './components/Item';
 import { CardSidebar } from './components/CardSidebar';
+
+const productList = [
+  { name: 'Avengers', imageUrl: '/img/posters/avengers.jpeg', price: 12 },
+  { name: 'Iron Man', imageUrl: '/img/posters/ironman.jpeg', price: 10 },
+  { name: 'Superman', imageUrl: '/img/posters/superman.jpeg', price: 11 },
+  { name: 'Spiderman', imageUrl: '/img/posters/spiderman.jpeg', price: 24 },
+  { name: 'Green Arrow', imageUrl: '/img/posters/greenarrow.jpeg', price: 19 },
+  { name: 'Flash', imageUrl: '/img/posters/flash.jpeg', price: 15 },
+  {
+    name: 'Night Thrasher',
+    imageUrl: '/img/posters/nightthrasher.jpeg',
+    price: 10,
+  },
+  {
+    name: 'Captain America',
+    imageUrl: '/img/posters/captainamerica.jpeg',
+    price: 20,
+  },
+];
+
 function App() {
   return (
     <div className="wrapper">
@@ -15,98 +35,9 @@ function App() {
       </div>
       <div className="container">
         {/* Item cards START */}
-        <Item />
-        <div className="item">
-          <img width={200} src="/img/posters/ironman.jpeg" alt="" />
-          <h2>Avengers</h2>
-          <div className="itemBottom">
-            <div className="price">
-              <span>Price:</span>
-              <p>12£</p>
-            </div>
-            <button className="addButton">
-              <img src="/img/button.svg" alt="button" />
-            </button>
-          </div>
-        </div>
-        <div className="item">
-          <img width={200} src="/img/posters/superman.jpeg" alt="" />
-          <h2>Avengers</h2>
-          <div className="itemBottom">
-            <div className="price">
-              <span>Price:</span>
-              <p>12£</p>
-            </div>
-            <button className="addButton">
-              <img src="/img/button.svg" alt="button" />
-            </button>
-          </div>
-        </div>
-        <div className="item">
-          <img width={200} src="/img/posters/spiderman.jpeg" alt="" />
-          <h2>Avengers</h2>
-          <div className="itemBottom">
-            <div className="price">
-              <span>Price:</span>
-              <p>12£</p>
-            </div>
-            <button className="addButton">
-              <img src="/img/button.svg" alt="button" />
-            </button>
-          </div>
-        </div>
-        <div className="item">
-          <img width={200} src="/img/posters/greenarrow.jpeg" alt="" />
-          <h2>Avengers</h2>
-          <div className="itemBottom">
-            <div className="price">
-              <span>Price:</span>
-              <p>12£</p>
-            </div>
-            <button className="addButton">
-              <img src="/img/button.svg" alt="button" />
-            </button>
-          </div>
-        </div>
-        <div className="item">
-          <img width={200} src="/img/posters/flash.jpeg" alt="" />
-          <h2>Avengers</h2>
-          <div className="itemBottom">
-            <div className="price">
-              <span>Price:</span>
-              <p>12£</p>
-            </div>
-            <button className="addButton">
-              <img src="/img/button.svg" alt="button" />
-            </button>
-          </div>
-        </div>
-        <div className="item">
-          <img width={200} src="/img/posters/nightthrasher.jpeg" alt="" />
-          <h2>Avengers</h2>
-          <div className="itemBottom">
-            <div className="price">
-              <span>Price:</span>
-              <p>12£</p>
-            </div>
-            <button className="addButton">
-              <img src="/img/button.svg" alt="button" />
-            </button>
-          </div>
-        </div>
-        <div className="item">
-          <img width={200} src="/img/posters/captainamerica.jpeg" alt="" />
-          <h2>Avengers</h2>
-          <div className="itemBottom">
-            <div className="price">
-              <span>Price:</span>
-              <p>12£</p>
-            </div>
-            <button className="addButton">
-              <img src="/img/button.svg" alt="button" />
-            </button>
-          </div>
-        </div>
+        {productList.map((obj) => (
+          <Item title={obj.name} imageUrl={obj.imageUrl} price={obj.price} />
+        ))}
         {/* Item cards END */}
       </div>
     </div>
