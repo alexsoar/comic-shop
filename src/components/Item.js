@@ -21,4 +21,4 @@ function Item() {
   );
 }
 
-export default Item;
+export { Item };
