@@ -121,19 +121,18 @@ ul li {
   }
 }
 .removeButton {
-  .addButton {
-    width: 30px;
-    height: 30px;
-    border: none;
-    background: none;
-    position: absolute;
-    right: 50px;
-    img {
-      border-radius: 0;
-      cursor: pointer;
-    }
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: none;
+  position: absolute;
+  right: 50px;
+  img {
+    border-radius: 0;
+    cursor: pointer;
   }
 }
+
 .headLine {
   display: flex;
   justify-content: space-between;
