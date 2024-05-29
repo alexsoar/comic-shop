@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 function Item(props) {
   return (
     <div className="item">
@@ -9,12 +10,24 @@ function Item(props) {
           <p>£ {props.price}</p>
         </div>
         <div className="buttons">
-          <button className="addButton">
+          <motion.button
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.3 },
+            }}
+            className="addButton"
+          >
             <img src="/img/like-off.svg" alt="button" />
-          </button>
-          <button className="addButton">
+          </motion.button>
+          <motion.button
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.3 },
+            }}
+            className="addButton"
+          >
             <img src="/img/button.svg" alt="button" />
-          </button>
+          </motion.button>
         </div>
       </div>
     </div>

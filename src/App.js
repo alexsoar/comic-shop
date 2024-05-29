@@ -3,19 +3,19 @@ import { Item } from './components/Item';
 import { CardSidebar } from './components/CardSidebar';
 
 const productList = [
-  { name: 'Avengers', imageUrl: '/img/posters/avengers.jpeg', price: 12 },
-  { name: 'Iron Man', imageUrl: '/img/posters/ironman.jpeg', price: 10 },
-  { name: 'Superman', imageUrl: '/img/posters/superman.jpeg', price: 11 },
-  { name: 'Spiderman', imageUrl: '/img/posters/spiderman.jpeg', price: 24 },
-  { name: 'Green Arrow', imageUrl: '/img/posters/greenarrow.jpeg', price: 19 },
-  { name: 'Flash', imageUrl: '/img/posters/flash.jpeg', price: 15 },
+  { title: 'Avengers', imageUrl: '/img/posters/avengers.jpeg', price: 12 },
+  { title: 'Iron Man', imageUrl: '/img/posters/ironman.jpeg', price: 10 },
+  { title: 'Superman', imageUrl: '/img/posters/superman.jpeg', price: 11 },
+  { title: 'Spiderman', imageUrl: '/img/posters/spiderman.jpeg', price: 24 },
+  { title: 'Green Arrow', imageUrl: '/img/posters/greenarrow.jpeg', price: 19 },
+  { title: 'Flash', imageUrl: '/img/posters/flash.jpeg', price: 15 },
   {
-    name: 'Night Thrasher',
+    title: 'Night Thrasher',
     imageUrl: '/img/posters/nightthrasher.jpeg',
     price: 10,
   },
   {
-    name: 'Captain America',
+    title: 'Captain America',
     imageUrl: '/img/posters/captainamerica.jpeg',
     price: 20,
   },
@@ -36,7 +36,7 @@ function App() {
       <div className="container">
         {/* Item cards START */}
         {productList.map((obj) => (
-          <Item title={obj.name} imageUrl={obj.imageUrl} price={obj.price} />
+          <Item title={obj.title} imageUrl={obj.imageUrl} price={obj.price} />
         ))}
         {/* Item cards END */}
       </div>
