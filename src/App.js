@@ -1,6 +1,7 @@
 import { Header } from './components/Header';
 import { Item } from './components/Item';
 import { CardSidebar } from './components/CardSidebar';
+import { Search } from './components/Search';
 
 const productList = [
   { title: 'Avengers', imageUrl: '/img/posters/avengers.jpeg', price: 12 },
@@ -26,13 +27,7 @@ function App() {
     <div className="wrapper">
       <CardSidebar />
       <Header />
-      <div className="headLine">
-        <h1>All comics</h1>
-        <div className="search d-flex">
-          <img width={18} src="/img/search.svg" alt="search" />{' '}
-          <input type="text" placeholder="Search" />
-        </div>
-      </div>
+      <Search />
       <div className="container">
         {/* Item cards START */}
         {productList.map((obj) => (
