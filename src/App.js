@@ -1,7 +1,7 @@
-import { Header } from './components/Header';
-import { Item } from './components/Item';
-import { CardSidebar } from './components/CardSidebar';
-import { Search } from './components/Search';
+import { Header } from './components/Header/Header';
+import { Item } from './components/Item/Item';
+import { CardSidebar } from './components/CardSidebar/CardSidebar';
+import { Search } from './components/Search/Search';
 
 const productList = [
   { title: 'Avengers', imageUrl: '/img/posters/avengers.jpeg', price: 12 },

@@ -1,0 +1,16 @@
+.headLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 15px;
+}
+.search {
+  padding: 7px;
+  border: 1px solid #b8b8b8;
+  border-radius: 7px;
+  input {
+    outline: none;
+    border: none;
+    padding: 3px 10px;
+  }
+}

@@ -1,21 +1,22 @@
 import { motion } from 'framer-motion';
+import styles from './Item.module.scss';
 function Item(props) {
   return (
-    <div className="item">
+    <div className={styles.item}>
       <img width={200} src={props.imageUrl} alt="" />
       <h2>{props.title}</h2>
-      <div className="itemBottom">
-        <div className="price">
+      <div className={styles.itemBottom}>
+        <div className={styles.price}>
           <span>Price:</span>
           <p>£ {props.price}</p>
         </div>
-        <div className="buttons">
+        <div className={styles.buttons}>
           <motion.button
             whileHover={{
               scale: 1.1,
               transition: { duration: 0.3 },
             }}
-            className="addButton"
+            className={styles.addButton}
           >
             <img src="/img/like-off.svg" alt="button" />
           </motion.button>
@@ -24,7 +25,7 @@ function Item(props) {
               scale: 1.1,
               transition: { duration: 0.3 },
             }}
-            className="addButton"
+            className={styles.addButton}
           >
             <img src="/img/button.svg" alt="button" />
           </motion.button>
