@@ -1,6 +1,16 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './Item.module.scss';
 function Item(props) {
+  const [Added, setAdded] = React.useState(false);
+  const clickAddtoCartBtn = () => {
+    setAdded(!Added);
+  };
+  const [AddFavorite, setAddFavorite] = React.useState(false);
+  const clickLikeBtn = () => {
+    setAddFavorite(!AddFavorite);
+  };
+
   return (
     <div className={styles.item}>
       <img width={200} src={props.imageUrl} alt="" />
@@ -17,8 +27,12 @@ function Item(props) {
               transition: { duration: 0.3 },
             }}
             className={styles.addButton}
+            onClick={clickLikeBtn}
           >
-            <img src="/img/like-off.svg" alt="button" />
+            <img
+              src={AddFavorite ? '/img/like-on.svg' : '/img/like-off.svg'}
+              alt="button"
+            />
           </motion.button>
           <motion.button
             whileHover={{
@@ -26,8 +40,12 @@ function Item(props) {
               transition: { duration: 0.3 },
             }}
             className={styles.addButton}
+            onClick={clickAddtoCartBtn}
           >
-            <img src="/img/button.svg" alt="button" />
+            <img
+              src={Added ? '/img/item-checked.svg' : '/img/button.svg'}
+              alt="button"
+            />
           </motion.button>
         </div>
       </div>
