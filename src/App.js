@@ -2,6 +2,7 @@ import { Header } from './components/Header/Header';
 import { Item } from './components/Item/Item';
 import { CardSidebar } from './components/CardSidebar/CardSidebar';
 import { Search } from './components/Search/Search';
+import React from 'react';
 
 const productList = [
   { title: 'Avengers', imageUrl: '/img/posters/avengers.jpeg', price: 12 },
@@ -23,10 +24,14 @@ const productList = [
 ];
 
 function App() {
+  const [cartOpened, setCartOpened] = React.useState(false);
+
   return (
     <div className="wrapper">
-      <CardSidebar />
-      <Header />
+      {cartOpened ? (
+        <CardSidebar onCloseCart={() => setCartOpened(false)} />
+      ) : null}
+      <Header onClickCart={() => setCartOpened(true)} />
       <Search />
       <div className="container">
         {/* Item cards START */}

@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
 import styles from './CardSidebar.module.scss';
-function CardSidebar() {
+function CardSidebar(props) {
   return (
-    <div style={{ display: 'none' }} className={styles.overlay}>
+    <div className={styles.overlay}>
       <div className={styles.cartSidebar}>
         <h2>Shopping basket</h2>
         <motion.button
+          onClick={props.onCloseCart}
           className={styles.removeButton}
           whileHover={{
             scale: 1.25,

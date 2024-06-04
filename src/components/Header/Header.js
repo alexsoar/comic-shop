@@ -1,5 +1,5 @@
 import styles from './Header.module.scss';
-function Header() {
+function Header(props) {
   return (
     <header>
       <div className={styles.westSide}>
@@ -11,7 +11,7 @@ function Header() {
       </div>
       <div className={styles.eastSide}>
         <ul className="d-flex">
-          <li>
+          <li style={{ cursor: 'pointer' }} onClick={props.onClickCart}>
             <img width={18} alt="cart" src="/img/cart.svg"></img>
             <span>1280 £</span>
           </li>
