@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
 import styles from './CardSidebar.module.scss';
-function CardSidebar(props) {
+function CardSidebar({ onCloseCart, items = [] }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.cartSidebar}>
         <h2>Shopping basket</h2>
         <motion.button
-          onClick={props.onCloseCart}
+          onClick={onCloseCart}
           className={styles.removeButton}
           whileHover={{
             scale: 1.25,
@@ -15,22 +15,24 @@ function CardSidebar(props) {
         >
           <img src="/img/remove_btn.svg" alt="removebtn" />
         </motion.button>
-        <div className={styles.cartItem}>
-          <img width={70} src="/img/posters/avengers.jpeg" alt="cartimage" />
-          <div className={styles.cartInfo}>
-            <h2>Avengers</h2>
-            <b>£ 12</b>
+        {items.map((obj) => (
+          <div className={styles.cartItem}>
+            <img width={70} src={obj.imageUrl} alt="cartimage" />
+            <div className={styles.cartInfo}>
+              <h2>{obj.title}</h2>
+              <b>£ {obj.price}</b>
+            </div>
+            <motion.button
+              className={styles.removeButton}
+              whileHover={{
+                scale: 1.25,
+                transition: { duration: 0.3 },
+              }}
+            >
+              <img src="/img/remove_btn.svg" alt="removebtn" />
+            </motion.button>
           </div>
-          <motion.button
-            className={styles.removeButton}
-            whileHover={{
-              scale: 1.25,
-              transition: { duration: 0.3 },
-            }}
-          >
-            <img src="/img/remove_btn.svg" alt="removebtn" />
-          </motion.button>
-        </div>
+        ))}
         <div className={styles.cartCheckout}>
           <div className={styles.sum}>
             <p>Total:</p>

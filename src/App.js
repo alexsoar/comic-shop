@@ -25,6 +25,10 @@ import React from 'react';
 function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
   const [productList, setproductList] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]);
+  const onAddToCart = (obj) => {
+    setCartItems((prev) => [...prev, obj]);
+  };
 
   React.useEffect(() => {
     fetch('https://666043af5425580055b31258.mockapi.io/Items')
@@ -39,14 +43,22 @@ function App() {
   return (
     <div className="wrapper">
       {cartOpened ? (
-        <CardSidebar onCloseCart={() => setCartOpened(false)} />
+        <CardSidebar
+          items={cartItems}
+          onCloseCart={() => setCartOpened(false)}
+        />
       ) : null}
       <Header onClickCart={() => setCartOpened(true)} />
       <Search />
       <div className="container">
         {/* Item cards START */}
         {productList.map((obj) => (
-          <Item title={obj.title} imageUrl={obj.imageUrl} price={obj.price} />
+          <Item
+            title={obj.title}
+            imageUrl={obj.imageUrl}
+            price={obj.price}
+            onPlus={(obj) => onAddToCart(obj)}
+          />
         ))}
         {/* Item cards END */}
       </div>

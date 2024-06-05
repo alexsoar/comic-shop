@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './Item.module.scss';
-function Item(props) {
+function Item({ title, imageUrl, price, onPlus }) {
   const [Added, setAdded] = React.useState(false);
   const clickAddtoCartBtn = () => {
+    onPlus({ title, imageUrl, price });
     setAdded(!Added);
   };
   const [AddFavorite, setAddFavorite] = React.useState(false);
@@ -13,12 +14,12 @@ function Item(props) {
 
   return (
     <div className={styles.item}>
-      <img width={200} src={props.imageUrl} alt="" />
-      <h2>{props.title}</h2>
+      <img width={200} src={imageUrl} alt="" />
+      <h2>{title}</h2>
       <div className={styles.itemBottom}>
         <div className={styles.price}>
           <span>Price:</span>
-          <p>£ {props.price}</p>
+          <p>£ {price}</p>
         </div>
         <div className={styles.buttons}>
           <motion.button
