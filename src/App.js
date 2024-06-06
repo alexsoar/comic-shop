@@ -37,7 +37,7 @@ function App() {
       .then((json) => {
         const itemsWithId = json.map((item) => ({
           ...item,
-          id: uuidv4(), // Генерация уникального идентификатора с помощью UUID
+          id: uuidv4(),
         }));
         setproductList(itemsWithId);
       });
@@ -54,7 +54,6 @@ function App() {
       <Header onClickCart={() => setCartOpened(true)} />
       <Search />
       <div className="container">
-        {/* Item cards START */}
         {productList.map((obj) => (
           <Item
             key={obj.id}
@@ -64,7 +63,6 @@ function App() {
             onPlus={() => onAddToCart(obj)}
           />
         ))}
-        {/* Item cards END */}
       </div>
     </div>
   );
