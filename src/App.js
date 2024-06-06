@@ -2,6 +2,7 @@ import { Header } from './components/Header/Header';
 import { Item } from './components/Item/Item';
 import { CardSidebar } from './components/CardSidebar/CardSidebar';
 import { Search } from './components/Search/Search';
+import { v4 as uuidv4 } from 'uuid';
 import React from 'react';
 
 // const productList = [
@@ -32,13 +33,15 @@ function App() {
 
   React.useEffect(() => {
     fetch('https://666043af5425580055b31258.mockapi.io/Items')
-      .then((result) => {
-        return result.json();
-      })
+      .then((result) => result.json())
       .then((json) => {
-        setproductList(json);
+        const itemsWithId = json.map((item) => ({
+          ...item,
+          id: uuidv4(), // Генерация уникального идентификатора с помощью UUID
+        }));
+        setproductList(itemsWithId);
       });
-  });
+  }, []);
 
   return (
     <div className="wrapper">
@@ -54,10 +57,11 @@ function App() {
         {/* Item cards START */}
         {productList.map((obj) => (
           <Item
+            key={obj.id}
             title={obj.title}
             imageUrl={obj.imageUrl}
             price={obj.price}
-            onPlus={(obj) => onAddToCart(obj)}
+            onPlus={() => onAddToCart(obj)}
           />
         ))}
         {/* Item cards END */}

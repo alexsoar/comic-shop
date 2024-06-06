@@ -16,7 +16,7 @@ function CardSidebar({ onCloseCart, items = [] }) {
           <img src="/img/remove_btn.svg" alt="removebtn" />
         </motion.button>
         {items.map((obj) => (
-          <div className={styles.cartItem}>
+          <div key={obj.id} className={styles.cartItem}>
             <img width={70} src={obj.imageUrl} alt="cartimage" />
             <div className={styles.cartInfo}>
               <h2>{obj.title}</h2>
