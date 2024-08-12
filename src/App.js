@@ -30,6 +30,9 @@ function App() {
   const onAddToCart = (obj) => {
     setCartItems((prev) => [...prev, obj]);
   };
+  const onRemoveFromCart = (obj) => {
+    setCartItems((prev) => prev.filter((item) => item.id !== obj.id));
+  };
 
   React.useEffect(() => {
     fetch('https://666043af5425580055b31258.mockapi.io/Items')
@@ -49,6 +52,7 @@ function App() {
         <CardSidebar
           items={cartItems}
           onCloseCart={() => setCartOpened(false)}
+          onRemove={onRemoveFromCart}
         />
       ) : null}
       <Header onClickCart={() => setCartOpened(true)} />
@@ -60,7 +64,9 @@ function App() {
             title={obj.title}
             imageUrl={obj.imageUrl}
             price={obj.price}
+            cartItems={cartItems}
             onPlus={() => onAddToCart(obj)}
+            onRemove={() => onRemoveFromCart(obj)}
           />
         ))}
       </div>

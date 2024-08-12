@@ -1,10 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './Item.module.scss';
-function Item({ title, imageUrl, price, onPlus }) {
+function Item({ title, imageUrl, price, onPlus, onRemove, cartItems }) {
   const [Added, setAdded] = React.useState(false);
+  React.useEffect(() => {
+    const isItemInCart = cartItems.some((item) => item.title === title);
+    setAdded(isItemInCart);
+  }, [cartItems, title]);
   const clickAddtoCartBtn = () => {
-    onPlus({ title, imageUrl, price });
+    if (Added) {
+      onRemove({ title, imageUrl, price });
+    } else {
+      onPlus({ title, imageUrl, price });
+    }
     setAdded(!Added);
   };
   const [AddFavorite, setAddFavorite] = React.useState(false);

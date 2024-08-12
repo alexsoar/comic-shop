@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import styles from './CardSidebar.module.scss';
-function CardSidebar({ onCloseCart, items = [] }) {
+function CardSidebar({ onCloseCart, items = [], onRemove }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.cartSidebar}>
@@ -24,6 +24,7 @@ function CardSidebar({ onCloseCart, items = [] }) {
             </div>
             <motion.button
               className={styles.removeButton}
+              onClick={() => onRemove(obj)}
               whileHover={{
                 scale: 1.25,
                 transition: { duration: 0.3 },
