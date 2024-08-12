@@ -1,30 +1,13 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import styles from './CardSidebar.module.scss';
+import styles from './Favorites.module.scss';
 
-function CardSidebar({
-  onCloseCart,
-  items = [],
-  onRemove,
-  onTotalPriceUpdate,
-}) {
-  const calculateTotal = () => {
-    return items.reduce((total, item) => total + item.price, 0);
-  };
-
-  const total = calculateTotal();
-  const tax = total * 0.05;
-
-  React.useEffect(() => {
-    onTotalPriceUpdate(total);
-  }, [items, onTotalPriceUpdate, total]);
-
+function Favorites({ onCloseFavorites, items = [], removeFromFavorites }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.cartSidebar}>
-        <h2>Shopping basket</h2>
+        <h2>Saved Items</h2>
         <motion.button
-          onClick={onCloseCart}
+          onClick={onCloseFavorites}
           className={styles.removeButton}
           whileHover={{
             scale: 1.25,
@@ -42,7 +25,7 @@ function CardSidebar({
             </div>
             <motion.button
               className={styles.removeButton}
-              onClick={() => onRemove(obj)}
+              onClick={() => removeFromFavorites(obj)}
               whileHover={{
                 scale: 1.25,
                 transition: { duration: 0.3 },
@@ -55,11 +38,11 @@ function CardSidebar({
         <div className={styles.cartCheckout}>
           <div className={styles.sum}>
             <p>Total:</p>
-            <p>£ {total.toFixed(2)}</p>
+            <p>£ 12</p>
           </div>
           <div className={styles.tax}>
             <p>Tax 5%</p>
-            <p>£ {tax.toFixed(2)}</p>
+            <p>£ 0.6</p>
           </div>
           <motion.button
             className={styles.btnCheckout}
@@ -79,4 +62,4 @@ function CardSidebar({
   );
 }
 
-export { CardSidebar };
+export { Favorites };

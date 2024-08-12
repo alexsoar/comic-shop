@@ -1,6 +1,7 @@
 import { Header } from './components/Header/Header';
 import { Item } from './components/Item/Item';
 import { CardSidebar } from './components/CardSidebar/CardSidebar';
+import { Favorites } from './components/Favorites/Favorites';
 import { Search } from './components/Search/Search';
 import { v4 as uuidv4 } from 'uuid';
 import React from 'react';
@@ -24,9 +25,23 @@ import React from 'react';
 //   },
 // ];
 function App() {
+  // useStates start
   const [cartOpened, setCartOpened] = React.useState(false);
+  const [favoritesOpened, setFavoritesOpened] = React.useState(false);
   const [productList, setproductList] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
+  const [favoriteItems, setFavoriteItems] = React.useState([]);
+  const [totalPrice, setTotalPrice] = React.useState(0);
+  //useStates end
+  const handleTotalPriceUpdate = (price) => {
+    setTotalPrice(price);
+  };
+  const onAddToFavorites = (obj) => {
+    setFavoriteItems((prev) => [...prev, obj]);
+  };
+  const onRemoveFromFavorites = (obj) => {
+    setFavoriteItems((prev) => prev.filter((item) => item.id !== obj.id));
+  };
   const onAddToCart = (obj) => {
     setCartItems((prev) => [...prev, obj]);
   };
@@ -53,9 +68,21 @@ function App() {
           items={cartItems}
           onCloseCart={() => setCartOpened(false)}
           onRemove={onRemoveFromCart}
+          onTotalPriceUpdate={handleTotalPriceUpdate}
         />
       ) : null}
-      <Header onClickCart={() => setCartOpened(true)} />
+      {favoritesOpened ? (
+        <Favorites
+          items={favoriteItems}
+          onCloseFavorites={() => setFavoritesOpened(false)}
+          removeFromFavorites={onRemoveFromFavorites}
+        />
+      ) : null}
+      <Header
+        onClickCart={() => setCartOpened(true)}
+        totalPrice={totalPrice}
+        onClickFavorites={() => setFavoritesOpened(true)}
+      />
       <Search />
       <div className="container">
         {productList.map((obj) => (
@@ -64,9 +91,12 @@ function App() {
             title={obj.title}
             imageUrl={obj.imageUrl}
             price={obj.price}
+            favoriteItems={favoriteItems}
             cartItems={cartItems}
             onPlus={() => onAddToCart(obj)}
             onRemove={() => onRemoveFromCart(obj)}
+            addToFavorites={() => onAddToFavorites(obj)}
+            removeFromFavorites={() => onRemoveFromFavorites(obj)}
           />
         ))}
       </div>

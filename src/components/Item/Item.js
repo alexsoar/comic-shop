@@ -1,7 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './Item.module.scss';
-function Item({ title, imageUrl, price, onPlus, onRemove, cartItems }) {
+function Item({
+  title,
+  imageUrl,
+  price,
+  onPlus,
+  onRemove,
+  addToFavorites,
+  removeFromFavorites,
+  cartItems,
+  favoriteItems,
+}) {
   const [Added, setAdded] = React.useState(false);
   React.useEffect(() => {
     const isItemInCart = cartItems.some((item) => item.title === title);
@@ -16,7 +26,16 @@ function Item({ title, imageUrl, price, onPlus, onRemove, cartItems }) {
     setAdded(!Added);
   };
   const [AddFavorite, setAddFavorite] = React.useState(false);
+  React.useEffect(() => {
+    const isItemFavorite = favoriteItems.some((item) => item.title === title);
+    setAddFavorite(isItemFavorite);
+  }, [favoriteItems, title]);
   const clickLikeBtn = () => {
+    if (AddFavorite) {
+      removeFromFavorites({ title, imageUrl, price });
+    } else {
+      addToFavorites({ title, imageUrl, price });
+    }
     setAddFavorite(!AddFavorite);
   };
 
