@@ -7,11 +7,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #2a2a2a;
   h1 {
-    color: red;
+    background: linear-gradient(to right, #ff5f6d, #ffc371);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-family: 'New Amsterdam', sans-serif;
+    font-weight: 400;
+    font-style: normal;
   }
   h2 {
     font-weight: normal;
-    font-size: 20px;
+    font-size: 22px;
+    font-family: 'New Amsterdam', sans-serif;
+    font-weight: 400;
+    font-style: normal;
   }
 }
 
@@ -52,4 +61,7 @@ ul li {
   justify-content: center;
   align-items: center;
 }
-// Shopping basket START //
+::selection {
+  color: #fff;
+  background-color: #ff5f6d;
+}

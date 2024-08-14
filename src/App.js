@@ -3,6 +3,7 @@ import { Item } from './components/Item/Item';
 import { CardSidebar } from './components/CardSidebar/CardSidebar';
 import { Favorites } from './components/Favorites/Favorites';
 import { Search } from './components/Search/Search';
+import { Slider } from './components/Slider/Slider';
 import { v4 as uuidv4 } from 'uuid';
 import React from 'react';
 
@@ -83,6 +84,7 @@ function App() {
         totalPrice={totalPrice}
         onClickFavorites={() => setFavoritesOpened(true)}
       />
+      <Slider />
       <Search />
       <div className="container">
         {productList.map((obj) => (

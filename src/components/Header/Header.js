@@ -1,6 +1,6 @@
 import styles from './Header.module.scss';
 
-function Header({ onClickCart, totalPrice, onClickFavorites }) {
+function Header({ onClickCart, onClickFavorites }) {
   return (
     <header>
       <div className={styles.westSide}>
