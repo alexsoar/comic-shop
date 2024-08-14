@@ -11,6 +11,7 @@ function Slider() {
         backgroundPosition: 'center',
         width: '100%',
         height: '500px',
+        borderRadius: '30px',
       }}
       className={styles.sliderContainer}
     >
