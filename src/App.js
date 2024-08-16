@@ -33,6 +33,7 @@ function App() {
   const [cartItems, setCartItems] = React.useState([]);
   const [favoriteItems, setFavoriteItems] = React.useState([]);
   const [totalPrice, setTotalPrice] = React.useState(0);
+  const [searchValue, setSearchValue] = React.useState('');
   //useStates end
   const handleTotalPriceUpdate = (price) => {
     setTotalPrice(price);
@@ -48,6 +49,9 @@ function App() {
   };
   const onRemoveFromCart = (obj) => {
     setCartItems((prev) => prev.filter((item) => item.id !== obj.id));
+  };
+  const onChangeSearchInput = (event) => {
+    setSearchValue(event.target.value);
   };
 
   React.useEffect(() => {
@@ -85,7 +89,11 @@ function App() {
         onClickFavorites={() => setFavoritesOpened(true)}
       />
       <Slider />
-      <Search />
+      <Search
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        onChangeSearchInput={onChangeSearchInput}
+      />
       <div className="container">
         {productList.map((obj) => (
           <Item
