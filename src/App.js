@@ -5,6 +5,7 @@ import { Favorites } from './components/Favorites/Favorites';
 import { Search } from './components/Search/Search';
 import { Slider } from './components/Slider/Slider';
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 import React from 'react';
 
 // const productList = [
@@ -29,7 +30,7 @@ function App() {
   // useStates start
   const [cartOpened, setCartOpened] = React.useState(false);
   const [favoritesOpened, setFavoritesOpened] = React.useState(false);
-  const [productList, setproductList] = React.useState([]);
+  const [productList, setProductList] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
   const [favoriteItems, setFavoriteItems] = React.useState([]);
   const [totalPrice, setTotalPrice] = React.useState(0);
@@ -51,18 +52,31 @@ function App() {
     setCartItems((prev) => prev.filter((item) => item.id !== obj.id));
   };
   const onChangeSearchInput = (event) => {
-    setSearchValue(event.target.value);
+    setSearchValue(event.target.value.toLowerCase());
   };
 
   React.useEffect(() => {
-    fetch('https://666043af5425580055b31258.mockapi.io/Items')
-      .then((result) => result.json())
-      .then((json) => {
-        const itemsWithId = json.map((item) => ({
+    // fetch('https://666043af5425580055b31258.mockapi.io/Items')
+    //   .then((result) => result.json())
+    //   .then((json) => {
+    //     const itemsWithId = json.map((item) => ({
+    //       ...item,
+    //       id: uuidv4(),
+    //     }));
+    //     setproductList(itemsWithId);
+    //   });
+    // Below we use axios instead of fetch
+    axios
+      .get('https://666043af5425580055b31258.mockapi.io/Items')
+      .then((response) => {
+        const itemsWithId = response.data.map((item) => ({
           ...item,
           id: uuidv4(),
         }));
-        setproductList(itemsWithId);
+        setProductList(itemsWithId);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
       });
   }, []);
 
