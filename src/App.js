@@ -46,9 +46,11 @@ function App() {
     setFavoriteItems((prev) => prev.filter((item) => item.id !== obj.id));
   };
   const onAddToCart = (obj) => {
+    axios.post('https://666043af5425580055b31258.mockapi.io/Cart', obj);
     setCartItems((prev) => [...prev, obj]);
   };
   const onRemoveFromCart = (obj) => {
+    // axios.delete(`https://666043af5425580055b31258.mockapi.io/Cart/${id}`);
     setCartItems((prev) => prev.filter((item) => item.id !== obj.id));
   };
   const onChangeSearchInput = (event) => {
@@ -74,6 +76,18 @@ function App() {
           id: uuidv4(),
         }));
         setProductList(itemsWithId);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+    axios
+      .get('https://666043af5425580055b31258.mockapi.io/Cart')
+      .then((response) => {
+        const itemsWithId = response.data.map((item) => ({
+          ...item,
+          id: uuidv4(),
+        }));
+        setCartItems(itemsWithId);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
