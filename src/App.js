@@ -95,20 +95,22 @@ function App() {
         onChangeSearchInput={onChangeSearchInput}
       />
       <div className="container">
-        {productList.map((obj) => (
-          <Item
-            key={obj.id}
-            title={obj.title}
-            imageUrl={obj.imageUrl}
-            price={obj.price}
-            favoriteItems={favoriteItems}
-            cartItems={cartItems}
-            onPlus={() => onAddToCart(obj)}
-            onRemove={() => onRemoveFromCart(obj)}
-            addToFavorites={() => onAddToFavorites(obj)}
-            removeFromFavorites={() => onRemoveFromFavorites(obj)}
-          />
-        ))}
+        {productList
+          .filter((item) => item.title.toLowerCase().includes(searchValue))
+          .map((obj) => (
+            <Item
+              key={obj.id}
+              title={obj.title}
+              imageUrl={obj.imageUrl}
+              price={obj.price}
+              favoriteItems={favoriteItems}
+              cartItems={cartItems}
+              onPlus={() => onAddToCart(obj)}
+              onRemove={() => onRemoveFromCart(obj)}
+              addToFavorites={() => onAddToFavorites(obj)}
+              removeFromFavorites={() => onRemoveFromFavorites(obj)}
+            />
+          ))}
       </div>
     </div>
   );
