@@ -11,6 +11,19 @@
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
 }
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+  h3 {
+    margin-top: 50px;
+  }
+  p {
+    margin: 0;
+  }
+}
 .removeButton {
   width: 30px;
   height: 30px;
@@ -71,6 +84,24 @@
   color: #ffffff;
   border: none;
   cursor: pointer;
+}
+.btnEmptyCart {
+  width: 100%;
+  height: 55px;
+  margin-top: 100px;
+  background: #9dd558;
+  border-radius: 18px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 // Shopping basket END //
 .overlay {

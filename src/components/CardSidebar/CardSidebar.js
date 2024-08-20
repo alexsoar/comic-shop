@@ -52,28 +52,54 @@ function CardSidebar({
             </motion.button>
           </div>
         ))}
-        <div className={styles.cartCheckout}>
-          <div className={styles.sum}>
-            <p>Total:</p>
-            <p>£ {total.toFixed(2)}</p>
+        {items.length > 0 ? (
+          <div className={styles.cartCheckout}>
+            <div className={styles.sum}>
+              <p>Total:</p>
+              <p>£ {total.toFixed(2)}</p>
+            </div>
+            <div className={styles.tax}>
+              <p>Tax 5%</p>
+              <p>£ {tax.toFixed(2)}</p>
+            </div>
+            <motion.button
+              className={styles.btnCheckout}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: '#007bff',
+                transition: { duration: 0.3 },
+              }}
+              whileTap={{ scale: 0.9 }}
+              animate={{ y: [0, -10, 0], transition: { duration: 0.5 } }}
+            >
+              Proceed to Checkout
+            </motion.button>
           </div>
-          <div className={styles.tax}>
-            <p>Tax 5%</p>
-            <p>£ {tax.toFixed(2)}</p>
+        ) : (
+          <div className={styles.emptyCart}>
+            <img src="/img/cart-empty.svg" alt="cartempty" />
+            <h3>The Basket is empty</h3>
+            <p>Add at least one item to place an order.</p>
+            <motion.button
+              className={styles.btnEmptyCart}
+              onClick={onCloseCart}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: '#007bff',
+                transition: { duration: 0.3 },
+              }}
+              whileTap={{ scale: 0.9 }}
+              animate={{ y: [0, -10, 0], transition: { duration: 0.5 } }}
+            >
+              <img
+                style={{ paddingRight: '10px' }}
+                src="/img/arrow-left.svg"
+                alt="arrowleft"
+              />{' '}
+              Return Back
+            </motion.button>
           </div>
-          <motion.button
-            className={styles.btnCheckout}
-            whileHover={{
-              scale: 1.1,
-              backgroundColor: '#007bff',
-              transition: { duration: 0.3 },
-            }}
-            whileTap={{ scale: 0.9 }}
-            animate={{ y: [0, -10, 0], transition: { duration: 0.5 } }}
-          >
-            Proceed to Checkout
-          </motion.button>
-        </div>
+        )}
       </div>
     </div>
   );
