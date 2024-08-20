@@ -10,6 +10,7 @@ function Slider() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         width: '100%',
+        minWidth: '335px',
         height: '500px',
         borderRadius: '30px',
       }}
