@@ -2,7 +2,9 @@ import styles from './Search.module.scss';
 function Search({ searchValue, setSearchValue, onChangeSearchInput }) {
   return (
     <div className={styles.headLine}>
-      <h1>{searchValue ? `Search on Request` : 'All comics'}</h1>
+      <h1 id="targetSection">
+        {searchValue ? `Search on Request` : 'All comics'}
+      </h1>
       <div className={`${styles.search} d-flex`}>
         <img width={18} src="/img/search.svg" alt="search" />{' '}
         <input

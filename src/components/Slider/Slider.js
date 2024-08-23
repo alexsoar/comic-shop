@@ -2,6 +2,12 @@ import styles from './Slider.module.scss';
 import { motion } from 'framer-motion';
 
 function Slider() {
+  const scrollToSection = () => {
+    const section = document.getElementById('targetSection');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div
       style={{
@@ -27,6 +33,7 @@ function Slider() {
         }}
         whileTap={{ scale: 0.9 }}
         animate={{ y: [0, -10, 0], transition: { duration: 0.5 } }}
+        onClick={scrollToSection}
       >
         Read now!
       </motion.button>
