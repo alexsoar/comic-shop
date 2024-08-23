@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { motion } from 'framer-motion';
 import styles from './Item.module.scss';
 function Item({
@@ -21,7 +22,8 @@ function Item({
     if (Added) {
       onRemove({ title, imageUrl, price });
     } else {
-      onPlus({ title, imageUrl, price });
+      const newId = uuidv4();
+      onPlus({ id: newId, title, imageUrl, price });
     }
     setAdded(!Added);
   };

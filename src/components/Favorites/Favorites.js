@@ -35,28 +35,6 @@ function Favorites({ onCloseFavorites, items = [], removeFromFavorites }) {
             </motion.button>
           </div>
         ))}
-        <div className={styles.cartCheckout}>
-          <div className={styles.sum}>
-            <p>Total:</p>
-            <p>£ 12</p>
-          </div>
-          <div className={styles.tax}>
-            <p>Tax 5%</p>
-            <p>£ 0.6</p>
-          </div>
-          <motion.button
-            className={styles.btnCheckout}
-            whileHover={{
-              scale: 1.1,
-              backgroundColor: '#007bff',
-              transition: { duration: 0.3 },
-            }}
-            whileTap={{ scale: 0.9 }}
-            animate={{ y: [0, -10, 0], transition: { duration: 0.5 } }}
-          >
-            Proceed to Checkout
-          </motion.button>
-        </div>
       </div>
     </div>
   );

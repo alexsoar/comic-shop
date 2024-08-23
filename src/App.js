@@ -33,7 +33,7 @@ function App() {
   };
 
   const onAddToCart = (obj) => {
-    const cartItem = { ...obj, id: uuidv4() }; // Генерация UUID для нового элемента
+    const cartItem = { ...obj };
     axios
       .post('https://666043af5425580055b31258.mockapi.io/Cart', cartItem)
       .then((response) => {
