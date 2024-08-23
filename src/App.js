@@ -4,6 +4,7 @@ import { CardSidebar } from './components/CardSidebar/CardSidebar';
 import { Favorites } from './components/Favorites/Favorites';
 import { Search } from './components/Search/Search';
 import { Slider } from './components/Slider/Slider';
+// import { ItemDescription } from './components/pages/ItemDescription';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import React from 'react';
@@ -63,7 +64,7 @@ function App() {
     axios
       .get('https://666043af5425580055b31258.mockapi.io/Items')
       .then((response) => {
-        setProductList(response.data); // Используйте данные как есть
+        setProductList(response.data);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -72,7 +73,7 @@ function App() {
     axios
       .get('https://666043af5425580055b31258.mockapi.io/Cart')
       .then((response) => {
-        setCartItems(response.data); // Используйте данные как есть
+        setCartItems(response.data);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -101,6 +102,18 @@ function App() {
         totalPrice={totalPrice}
         onClickFavorites={() => setFavoritesOpened(true)}
       />
+      {/* {productList
+        .filter((item) => item.title.toLowerCase().includes(searchValue))
+        .map((obj) => (
+          <ItemDescription
+            key={obj.id}
+            title={obj.title}
+            imageUrl={obj.imageUrl}
+            description={obj.description}
+            published={obj.published}
+            price={obj.price}
+          />
+        ))} */}
       <Slider />
       <Search
         searchValue={searchValue}
@@ -115,6 +128,7 @@ function App() {
               key={obj.id}
               title={obj.title}
               imageUrl={obj.imageUrl}
+              description={obj.description}
               price={obj.price}
               favoriteItems={favoriteItems}
               cartItems={cartItems}
