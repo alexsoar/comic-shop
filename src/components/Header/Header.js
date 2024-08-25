@@ -1,15 +1,18 @@
 import styles from './Header.module.scss';
+import { Link } from 'react-router-dom';
 
 function Header({ onClickCart, onClickFavorites }) {
   return (
     <header>
-      <div className={styles.westSide}>
-        <img width={150} src="/img/logo.jpg" alt="Logo" />
-        <div className={styles.headerInfo}>
-          <h3>Comics Shop</h3>
-          <p>The best comics shop ever</p>
+      <Link to="/">
+        <div className={styles.westSide}>
+          <img width={150} src="/img/logo.jpg" alt="Logo" />
+          <div className={styles.headerInfo}>
+            <h3>Comics Shop</h3>
+            <p>The best comics shop ever</p>
+          </div>
         </div>
-      </div>
+      </Link>
       <div className={styles.eastSide}>
         <ul className="d-flex">
           <li style={{ cursor: 'pointer' }} onClick={onClickCart}>

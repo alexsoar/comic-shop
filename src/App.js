@@ -4,10 +4,11 @@ import { CardSidebar } from './components/CardSidebar/CardSidebar';
 import { Favorites } from './components/Favorites/Favorites';
 import { Search } from './components/Search/Search';
 import { Slider } from './components/Slider/Slider';
-// import { ItemDescription } from './components/pages/ItemDescription';
+import { ItemDescription } from './components/pages/ItemDescription';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   // useStates start
@@ -102,19 +103,10 @@ function App() {
         totalPrice={totalPrice}
         onClickFavorites={() => setFavoritesOpened(true)}
       />
-      {/* {productList
-        .filter((item) => item.title.toLowerCase().includes(searchValue))
-        .map((obj) => (
-          <ItemDescription
-            key={obj.id}
-            title={obj.title}
-            imageUrl={obj.imageUrl}
-            description={obj.description}
-            published={obj.published}
-            price={obj.price}
-          />
-        ))} */}
       <Slider />
+      <Routes>
+        <Route path="item" element={<ItemDescription />}></Route>
+      </Routes>
       <Search
         searchValue={searchValue}
         setSearchValue={setSearchValue}

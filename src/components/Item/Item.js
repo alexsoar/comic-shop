@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { motion } from 'framer-motion';
 import styles from './Item.module.scss';
@@ -43,7 +44,9 @@ function Item({
 
   return (
     <div className={styles.item}>
-      <img width={200} src={imageUrl} alt="" />
+      <Link to="/item">
+        <img width={200} src={imageUrl} alt="" />
+      </Link>
       <h2>{title}</h2>
       <div className={styles.itemBottom}>
         <div className={styles.price}>
