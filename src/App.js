@@ -4,7 +4,8 @@ import { CardSidebar } from './components/CardSidebar/CardSidebar';
 import { Favorites } from './components/Favorites/Favorites';
 import { Search } from './components/Search/Search';
 import { Slider } from './components/Slider/Slider';
-import { ItemDescription } from './components/pages/ItemDescription';
+import { ItemDescription } from './components/ItemDescription/ItemDescription';
+import { ItemProvider } from './context/ItemContext';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import React from 'react';
@@ -81,6 +82,10 @@ function App() {
       });
   }, []);
 
+  const contextValue = {
+    productList,
+  };
+
   return (
     <div className="wrapper">
       {cartOpened && (
@@ -113,23 +118,25 @@ function App() {
         onChangeSearchInput={onChangeSearchInput}
       />
       <div className="container">
-        {productList
-          .filter((item) => item.title.toLowerCase().includes(searchValue))
-          .map((obj) => (
-            <Item
-              key={obj.id}
-              title={obj.title}
-              imageUrl={obj.imageUrl}
-              description={obj.description}
-              price={obj.price}
-              favoriteItems={favoriteItems}
-              cartItems={cartItems}
-              onPlus={() => onAddToCart(obj)}
-              onRemove={() => onRemoveFromCart(obj)}
-              addToFavorites={() => onAddToFavorites(obj)}
-              removeFromFavorites={() => onRemoveFromFavorites(obj)}
-            />
-          ))}
+        <ItemProvider value={contextValue}>
+          {productList
+            .filter((item) => item.title.toLowerCase().includes(searchValue))
+            .map((obj) => (
+              <Item
+                key={obj.id}
+                title={obj.title}
+                imageUrl={obj.imageUrl}
+                description={obj.description}
+                price={obj.price}
+                favoriteItems={favoriteItems}
+                cartItems={cartItems}
+                onPlus={() => onAddToCart(obj)}
+                onRemove={() => onRemoveFromCart(obj)}
+                addToFavorites={() => onAddToFavorites(obj)}
+                removeFromFavorites={() => onRemoveFromFavorites(obj)}
+              />
+            ))}
+        </ItemProvider>
       </div>
     </div>
   );
