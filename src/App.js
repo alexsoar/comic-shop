@@ -1,18 +1,29 @@
+// * Libraries *
+import axios from 'axios';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
+// ─── ⋆⋅☆⋅⋆ ──
+
+// * Components *
 import { Header } from './components/Header/Header';
-import { Item } from './components/Item/Item';
 import { CardSidebar } from './components/CardSidebar/CardSidebar';
 import { Favorites } from './components/Favorites/Favorites';
 import { Search } from './components/Search/Search';
 import { Slider } from './components/Slider/Slider';
+// ─── ⋆⋅☆⋅⋆ ──
+
+// * Pages *
+import { Home } from './pages/Home';
 import { SingleProduct } from './pages/SingleProduct';
-import { ItemProvider } from './context/ItemContext';
-import { v4 as uuidv4 } from 'uuid';
-import axios from 'axios';
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+// ─── ⋆⋅☆⋅⋆ ──
+
+// * Context *
+import { AppProvider } from './context/AppContext';
+// ⸜(｡˃ ᵕ ˂ )⸝♡
 
 function App() {
-  // useStates start
+  // * useStates *
   const [cartOpened, setCartOpened] = React.useState(false);
   const [favoritesOpened, setFavoritesOpened] = React.useState(false);
   const [productList, setProductList] = React.useState([]);
@@ -20,7 +31,7 @@ function App() {
   const [favoriteItems, setFavoriteItems] = React.useState([]);
   const [totalPrice, setTotalPrice] = React.useState(0);
   const [searchValue, setSearchValue] = React.useState('');
-  // useStates end
+  // ¯\_(ツ)_/¯
 
   const handleTotalPriceUpdate = (price) => {
     setTotalPrice(price);
@@ -82,66 +93,83 @@ function App() {
       });
   }, []);
 
+  const contextValue = {
+    productList,
+    cartItems,
+    favoriteItems,
+    totalPrice,
+    searchValue,
+    setSearchValue,
+    onAddToCart,
+    onRemoveFromCart,
+    onAddToFavorites,
+    onRemoveFromFavorites,
+    onChangeSearchInput,
+  };
+
   return (
-    <div className="wrapper">
-      {cartOpened && (
-        <CardSidebar
-          items={cartItems}
-          onCloseCart={() => setCartOpened(false)}
-          onRemove={onRemoveFromCart}
-          onTotalPriceUpdate={handleTotalPriceUpdate}
+    <AppProvider value={contextValue}>
+      <div className="wrapper">
+        {cartOpened && (
+          <CardSidebar
+            items={cartItems}
+            onCloseCart={() => setCartOpened(false)}
+            onRemove={onRemoveFromCart}
+            onTotalPriceUpdate={handleTotalPriceUpdate}
+          />
+        )}
+        {favoritesOpened && (
+          <Favorites
+            items={favoriteItems}
+            onCloseFavorites={() => setFavoritesOpened(false)}
+            removeFromFavorites={onRemoveFromFavorites}
+          />
+        )}
+        <Header
+          onClickCart={() => setCartOpened(true)}
+          totalPrice={totalPrice}
+          onClickFavorites={() => setFavoritesOpened(true)}
         />
-      )}
-      {favoritesOpened && (
-        <Favorites
-          items={favoriteItems}
-          onCloseFavorites={() => setFavoritesOpened(false)}
-          removeFromFavorites={onRemoveFromFavorites}
+        <Slider />
+        <Search
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          onChangeSearchInput={onChangeSearchInput}
         />
-      )}
-      <Header
-        onClickCart={() => setCartOpened(true)}
-        totalPrice={totalPrice}
-        onClickFavorites={() => setFavoritesOpened(true)}
-      />
-      <Slider />
-      <Routes>
-        <Route path="item" element={<SingleProduct />}></Route>
-      </Routes>
-      <Search
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        onChangeSearchInput={onChangeSearchInput}
-      />
-      <div className="container">
-        {productList
-          .filter((item) => item.title.toLowerCase().includes(searchValue))
-          .map((obj) => (
-            <ItemProvider
-              key={obj.id}
-              value={{
-                title: obj.title,
-                description: obj.description,
-                imageUrl: obj.imageUrl,
-              }}
-            >
-              <Item
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="item" element={<SingleProduct />}></Route>
+        </Routes>
+        {/* <div className="container">
+          {productList
+            .filter((item) => item.title.toLowerCase().includes(searchValue))
+            .map((obj) => (
+              <ItemProvider
                 key={obj.id}
-                title={obj.title}
-                imageUrl={obj.imageUrl}
-                description={obj.description}
-                price={obj.price}
-                favoriteItems={favoriteItems}
-                cartItems={cartItems}
-                onPlus={() => onAddToCart(obj)}
-                onRemove={() => onRemoveFromCart(obj)}
-                addToFavorites={() => onAddToFavorites(obj)}
-                removeFromFavorites={() => onRemoveFromFavorites(obj)}
-              />
-            </ItemProvider>
-          ))}
+                value={{
+                  title: obj.title,
+                  description: obj.description,
+                  imageUrl: obj.imageUrl,
+                }}
+              >
+                <Item
+                  key={obj.id}
+                  title={obj.title}
+                  imageUrl={obj.imageUrl}
+                  description={obj.description}
+                  price={obj.price}
+                  favoriteItems={favoriteItems}
+                  cartItems={cartItems}
+                  onPlus={() => onAddToCart(obj)}
+                  onRemove={() => onRemoveFromCart(obj)}
+                  addToFavorites={() => onAddToFavorites(obj)}
+                  removeFromFavorites={() => onRemoveFromFavorites(obj)}
+                />
+              </ItemProvider>
+            ))}
+        </div> */}
       </div>
-    </div>
+    </AppProvider>
   );
 }
 
