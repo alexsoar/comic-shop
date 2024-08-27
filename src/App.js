@@ -4,7 +4,7 @@ import { CardSidebar } from './components/CardSidebar/CardSidebar';
 import { Favorites } from './components/Favorites/Favorites';
 import { Search } from './components/Search/Search';
 import { Slider } from './components/Slider/Slider';
-import { ItemDescription } from './components/ItemDescription/ItemDescription';
+import { SingleProduct } from './pages/SingleProduct';
 import { ItemProvider } from './context/ItemContext';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
@@ -82,10 +82,6 @@ function App() {
       });
   }, []);
 
-  const contextValue = {
-    productList,
-  };
-
   return (
     <div className="wrapper">
       {cartOpened && (
@@ -110,7 +106,7 @@ function App() {
       />
       <Slider />
       <Routes>
-        <Route path="item" element={<ItemDescription />}></Route>
+        <Route path="item" element={<SingleProduct />}></Route>
       </Routes>
       <Search
         searchValue={searchValue}
@@ -118,10 +114,17 @@ function App() {
         onChangeSearchInput={onChangeSearchInput}
       />
       <div className="container">
-        <ItemProvider value={contextValue}>
-          {productList
-            .filter((item) => item.title.toLowerCase().includes(searchValue))
-            .map((obj) => (
+        {productList
+          .filter((item) => item.title.toLowerCase().includes(searchValue))
+          .map((obj) => (
+            <ItemProvider
+              key={obj.id}
+              value={{
+                title: obj.title,
+                description: obj.description,
+                imageUrl: obj.imageUrl,
+              }}
+            >
               <Item
                 key={obj.id}
                 title={obj.title}
@@ -135,8 +138,8 @@ function App() {
                 addToFavorites={() => onAddToFavorites(obj)}
                 removeFromFavorites={() => onRemoveFromFavorites(obj)}
               />
-            ))}
-        </ItemProvider>
+            </ItemProvider>
+          ))}
       </div>
     </div>
   );
