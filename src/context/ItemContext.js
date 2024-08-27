@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ItemContext = React.createContext();
+export const ItemContext = React.createContext();
 
 export const useItemContext = () => {
   return React.useContext(ItemContext);
