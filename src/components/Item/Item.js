@@ -20,10 +20,10 @@ function Item({
     setAdded(isItemInCart);
   }, [cartItems, title]);
   const clickAddtoCartBtn = () => {
+    const newId = uuidv4();
     if (Added) {
       onRemove({ title, imageUrl, price });
     } else {
-      const newId = uuidv4();
       onPlus({ id: newId, title, imageUrl, price });
     }
     setAdded(!Added);
